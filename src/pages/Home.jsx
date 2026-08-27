@@ -6,6 +6,7 @@ export default function Home() {
   const { user } = useAuth()
   return (
     <>
+      {/* ── Hero ── */}
       <div className="hero">
         <div className="hero-eyebrow">
           <SparkleIcon size={14} /> &nbsp; Built for curious minds
@@ -29,6 +30,108 @@ export default function Home() {
         </div>
       </div>
 
+      {/* ── AI Showcase Banner ── */}
+      <div className="container">
+        <div className="ai-showcase">
+          {/* Animated background blobs */}
+          <div className="ai-showcase-blob ai-blob-1" />
+          <div className="ai-showcase-blob ai-blob-2" />
+
+          <div className="ai-showcase-left">
+            <div className="ai-showcase-badge">
+              <SparkleIcon size={14} color="#FF6B35" />
+              Powered by Gemini AI
+            </div>
+            <h2 className="ai-showcase-title">
+              Generate quizzes<br />
+              <span className="ai-gradient-text">from any PDF</span>
+            </h2>
+            <p className="ai-showcase-desc">
+              Upload lecture notes, research papers, or textbooks — our AI reads the content,
+              understands concepts, and generates high‑quality MCQs instantly.
+              Review, customize, and publish in minutes.
+            </p>
+            <ul className="ai-feature-list">
+              <li>
+                <span className="ai-feature-icon">📄</span>
+                <div>
+                  <strong>PDF to Quiz in seconds</strong>
+                  <p>Drop any PDF; AI extracts key concepts automatically</p>
+                </div>
+              </li>
+              <li>
+                <span className="ai-feature-icon">🎯</span>
+                <div>
+                  <strong>Difficulty control</strong>
+                  <p>Choose Easy, Medium, or Hard — AI adapts accordingly</p>
+                </div>
+              </li>
+              <li>
+                <span className="ai-feature-icon">✏️</span>
+                <div>
+                  <strong>Review & edit before publish</strong>
+                  <p>Inspect every question, swap options, remove any you dislike</p>
+                </div>
+              </li>
+            </ul>
+            {user ? (
+              <Link to="/ai-quiz" className="btn ai-showcase-cta">
+                <SparkleIcon size={16} color="white" />
+                Try AI Quiz Builder →
+              </Link>
+            ) : (
+              <Link to="/login" className="btn ai-showcase-cta">
+                <SparkleIcon size={16} color="white" />
+                Sign in to Try for Free →
+              </Link>
+            )}
+          </div>
+
+          <div className="ai-showcase-right">
+            {/* Animated mock quiz card */}
+            <div className="ai-mock-card">
+              <div className="ai-mock-header">
+                <div className="ai-mock-dot red" /><div className="ai-mock-dot yellow" /><div className="ai-mock-dot green" />
+                <span className="ai-mock-title">AI Quiz Builder</span>
+              </div>
+              <div className="ai-mock-body">
+                <div className="ai-mock-step ai-mock-step-done">
+                  <span className="ai-mock-step-icon">✓</span>
+                  <span>PDF uploaded — <em>chapter3.pdf</em></span>
+                </div>
+                <div className="ai-mock-progress-wrap">
+                  <div className="ai-mock-progress-label">
+                    <SparkleIcon size={12} color="#FF6B35" /> Generating questions…
+                  </div>
+                  <div className="ai-mock-progress-bar">
+                    <div className="ai-mock-progress-fill" />
+                  </div>
+                </div>
+                <div className="ai-mock-question">
+                  <div className="ai-mock-q-label">Q3 of 10</div>
+                  <div className="ai-mock-q-text">
+                    What is the primary function of mitochondria in eukaryotic cells?
+                  </div>
+                  <div className="ai-mock-options">
+                    {['Protein synthesis', 'Energy production (ATP)', 'DNA replication', 'Lipid storage'].map((opt, i) => (
+                      <div key={i} className={`ai-mock-option${i === 1 ? ' ai-mock-option-correct' : ''}`}>
+                        <span className="ai-mock-opt-key">{String.fromCharCode(65+i)}</span>
+                        {opt}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="ai-mock-footer">
+                  <span className="ai-badge"><SparkleIcon size={10} color="#FF8C61" /> AI Generated</span>
+                  <span className="diff-badge medium">Medium</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Feature strip ── */}
       <div className="container">
         <div className="feature-strip">
           <div className="feature-pill">
